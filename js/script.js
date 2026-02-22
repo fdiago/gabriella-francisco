@@ -61,6 +61,12 @@ quizData.forEach(data => {
             </div>
         </div>
     `;
+    
+    // NUEVO: Agregamos la función para que gire al tocarla en celulares
+    card.addEventListener('click', () => {
+        card.classList.toggle('is-flipped');
+    });
+
     quizContainer.appendChild(card);
 });
 

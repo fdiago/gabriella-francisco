@@ -490,3 +490,32 @@ footer {
     text-align: center;
     padding: 20px;
 }
+
+/* --- AJUSTES PARA CELULARES --- */
+@media (max-width: 768px) {
+    /* 1. Flores: Las hacemos más pequeñas y semitransparentes (marca de agua) para no tapar el texto */
+    .section-flowers.is-visible .section-flower {
+        max-width: 50px !important;
+        opacity: 0.2 !important; 
+    }
+
+    /* 2. Quiz: Achicamos las tarjetas para que quepan dos por fila y no quede tan largo */
+    .quiz-container {
+        gap: 10px;
+    }
+    
+    .quiz-card {
+        width: 45%; /* Ocupan casi la mitad de la pantalla cada una */
+        height: 160px;
+    }
+
+    .card-front, .card-back {
+        padding: 10px;
+        font-size: 0.85rem; /* Texto un poco más pequeño */
+    }
+}
+
+/* 3. Regla para que la tarjeta gire al tocarla en el celular (se usa con JavaScript) */
+.quiz-card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
