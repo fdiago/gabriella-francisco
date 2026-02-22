@@ -1,0 +1,13 @@
+{
+  "name": "gyf-invite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Invitación boda Gabriella & Francisco + generador de PDFs",
+  "scripts": {
+    "generar-pdfs": "node scripts/generar-pdfs.js"
+  },
+  "devDependencies": {
+    "csv-parse": "^5.5.2",
+    "puppeteer": "^21.0.0"
+  }
+}

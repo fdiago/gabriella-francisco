@@ -1,0 +1,492 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5dc;
+    color: #333;
+}
+
+section {
+    position: relative;
+    z-index: 2;
+    padding: 100px 20px;
+    text-align: center;
+    border-bottom: 1px solid #ffc0cb;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+#home {
+    min-height: 100vh;
+    height: 100vh;
+    max-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-top: 60px;
+}
+
+#home .home-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url('../assets/images/flowers.png');
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    transition: opacity 0.2s ease-out;
+}
+
+/* Overlay que se levanta para revelar las flores creciendo desde abajo */
+#home::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #f5f5dc;
+    z-index: 0;
+    animation: flowersReveal 1.8s ease-out forwards;
+    transform-origin: bottom;
+}
+
+#home .container {
+    position: relative;
+    z-index: 3;
+}
+
+/* Elementos solo para PDF (ocultos en la web) */
+.pdf-only {
+    display: none !important;
+}
+
+/* Nombre del invitado (visible solo al generar PDF) */
+.invitado-nombre {
+    display: none;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.75rem;
+    color: #333;
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.02em;
+}
+
+.invitacion-frase {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.25rem;
+    color: #333;
+    margin: 0 0 1.25rem 0;
+    line-height: 1.4;
+}
+
+/* Orden: 1) flores, 2) título principal, 3) subtítulo */
+#home .title {
+    font-size: 4rem;
+    margin: 0;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2s forwards;
+}
+
+#home .subtitle {
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 3.2s forwards;
+}
+
+/* Modo PDF: solo primera página (#home); nav, footer y resto de secciones ocultos */
+body.pdf-invitacion nav,
+body.pdf-invitacion footer,
+body.pdf-invitacion section:not(#home) {
+    display: none !important;
+}
+
+body.pdf-invitacion .pdf-only {
+    display: block !important;
+}
+
+body.pdf-invitacion .no-pdf {
+    display: none !important;
+}
+
+body.pdf-invitacion .invitado-nombre {
+    display: block !important;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    /* Un poco más grande para que destaque */
+    border-top: 1px solid rgba(51, 51, 51, 0.2);
+    border-bottom: 1px solid rgba(51, 51, 51, 0.2);
+    padding: 1rem 0;
+}
+
+body.pdf-invitacion #home {
+    min-height: 100vh;
+    height: 100vh;
+    padding: 3rem 1.5rem;
+    /* Aumentamos padding superior para alejar del borde */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Esto empuja el contenido a los extremos */
+    align-items: center;
+}
+
+/* Forzamos al contenedor interno a ocupar espacio para ayudar a la distribución */
+body.pdf-invitacion #home .container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centra el título y nombre del invitado verticalmente */
+    width: 100%;
+}
+
+body.pdf-invitacion #home::after {
+    transform: scaleY(0);
+    pointer-events: none;
+}
+
+body.pdf-invitacion #home .subtitle {
+    opacity: 1 !important;    /* Esto quita el desvanecido */
+    visibility: visible !important;
+    animation: none !important; /* Evita que la animación lo oculte al inicio */
+    font-size: 1.5rem;
+    /* Ajustado para móviles */
+    margin-bottom: 6rem;
+    z-index: 10;
+}
+
+body.pdf-invitacion #home .title {
+    opacity: 1 !important;    /* Esto quita el desvanecido */
+    visibility: visible !important;
+    animation: none !important; /* Evita que la animación lo oculte al inicio */
+    font-size: 3.5rem;
+    /* Ajustado para móviles */
+    margin-bottom: 0.5rem;
+    z-index: 10;
+}
+
+/* Fondo de la portada en PDF: fidelidad visual */
+body.pdf-invitacion #home .home-bg {
+    background-size: cover;
+    background-position: center bottom;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+
+/* Botones en la única página PDF (Confirmar asistencia + Más información) */
+body.pdf-invitacion .pdf-botones {
+    display: flex !important;
+    justify-content: space-between;
+    /* Empuja uno a cada extremo */
+    position: relative;
+    /* Lo despega del flujo normal */
+    bottom: 40px;
+    /* Distancia desde el borde inferior */
+    left: 5%;
+    /* Margen lateral izquierdo */
+    right: 5%;
+    /* Margen lateral derecho */
+    gap: 0.75rem;
+    /* Espacio entre ellos si se llegan a tocar */
+    width: 90%;
+    margin-top: auto; /* Empuja hacia abajo */
+    padding-bottom: 20px;
+}
+
+body.pdf-invitacion .pdf-boton {
+    flex: 1;
+    display: flex !important;
+    padding: 0.65rem 1.25rem;
+    background-color: #333;
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+body.pdf-invitacion .pdf-boton--secundario {
+    background-color: transparent;
+    color: #333 !important;
+    border: 2px solid #333;
+}
+
+/* Texto de validez de invitación debajo de los botones */
+.pdf-cupos {
+    display: none; /* Oculto por defecto en la web */
+}
+
+bbody.pdf-invitacion #pdf-cupos-texto {
+    display: block !important;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1rem;
+    color: #333;
+    margin-top: 15px;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+}
+
+/* En PDF las flores laterales visibles (sin depender del scroll) */
+body.pdf-invitacion .section-flower {
+    opacity: 0.85 !important;
+    transform: translateY(-50%) scale(1) !important;
+}
+
+body.pdf-invitacion .section-flower--right {
+    transform: translateY(-50%) scale(1) scaleX(-1) !important;
+}
+
+/* En PDF ocultar iframe del mapa (puede no renderizar bien) */
+body.pdf-invitacion .info-map-wrap {
+    display: none !important;
+}
+
+@keyframes flowersReveal {
+    from {
+        transform: scaleY(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: scaleY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Quiz Section */
+.quiz-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    perspective: 1000px;
+}
+
+.quiz-card {
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.quiz-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.card-front {
+    background-color: #f1f1f1;
+}
+
+.card-back {
+    background-color: #e0e0e0;
+    transform: rotateY(180deg);
+}
+
+/* Flores decorativas por sección (aparecen/desaparecen al hacer scroll) */
+.section-flowers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section-flower {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%) scale(0.95);
+    max-height: 160px;
+    max-width: 120px;
+    object-fit: contain;
+    opacity: 0;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section-flower--left {
+    left: 8%;
+}
+
+.section-flower--right {
+    right: 8%;
+    transform: translateY(-50%) scale(0.95) scaleX(-1);
+}
+
+/* Nuestra Historia: flores entre texto y bordes */
+#our-story .section-flower {
+    max-height: 180px;
+    max-width: 140px;
+}
+
+/* Quiz: flores entre columnas y extremos */
+#quiz .section-flower {
+    max-height: 170px;
+    max-width: 130px;
+}
+
+/* Información y RSVP: flores entre texto y final de pantalla */
+#info .section-flower,
+#regalos .section-flower {
+    max-height: 160px;
+    max-width: 120px;
+}
+
+/* Dresscode: flores entre columnas y extremos */
+#dresscode .section-flower {
+    max-height: 170px;
+    max-width: 130px;
+}
+
+.section-flowers.is-visible .section-flower {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+.section-flowers.is-visible .section-flower--right {
+    transform: translateY(-50%) scale(1) scaleX(-1);
+}
+
+/* Info Section */
+#info .info-content {
+    display: flex;
+    justify-content: space-around;
+    text-align: left;
+}
+
+#info .info-item {
+    width: 45%;
+}
+
+#info .info-map-text {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: #666;
+}
+
+#info .info-map-wrap {
+    margin-top: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+#info .info-map {
+    display: block;
+    width: 100%;
+    height: 350px;
+    border: 0;
+}
+
+#info .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* RSVP Section */
+.google-form-placeholder {
+    border: 2px dashed #ccc;
+    padding: 50px;
+    margin-top: 20px;
+}
+
+/* Confirma tu asistencia: formulario de Google */
+.google-form-wrap {
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.google-form-embed {
+    display: block;
+    width: 100%;
+    min-height: 800px;
+    border: 0;
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}

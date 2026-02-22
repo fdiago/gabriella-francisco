@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriella & Francisco</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="#home">Inicio</a></li>
+            <li><a href="#our-story">Nuestra Historia</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+            <li><a href="#info">Información</a></li>
+            <li><a href="#dresscode">Dresscode</a></li>
+            <li><a href="#regalos">Regalos</a></li>
+            <li><a href="#confirmar-asistencia">Confirma tu asistencia</a></li>
+        </ul>
+    </nav>
+
+    <!-- Initial Screen (también usada como plantilla para PDF de invitaciones) -->
+    <section id="home">
+        <div class="home-bg" aria-hidden="true"></div>
+        <div class="container">
+            <p class="invitado-nombre" id="invitado-nombre" data-pdf-placeholder></p>
+            <p class="invitacion-frase pdf-only" id="invitacion-frase"></p>
+            <h2 class="subtitle">Junio 13 2026</h2>
+            <h1 class="title">Gabriella & Francisco</h1>
+            <div class="pdf-only pdf-botones">
+                <a id="pdf-mas-info-link" class="pdf-boton pdf-boton--secundario" href="#">Más información</a>
+                <a id="pdf-confirmar-link" class="pdf-boton" href="#">Confirmar mi asistencia</a>
+            </div>
+            <div id="pdf-cupos-texto" class="pdf-only"></div>
+        </div>
+    </section>
+
+    <!-- Our Story -->
+    <section id="our-story">
+        <div class="section-flowers" aria-hidden="true">
+            <img src="assets/images/flower-peony.png" alt="" class="section-flower section-flower--left">
+            <img src="assets/images/flower-peony.png" alt="" class="section-flower section-flower--right">
+        </div>
+        <div class="container">
+            <h2>Nuestra Historia</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.</p>
+        </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz">
+        <div class="section-flowers" aria-hidden="true">
+            <img src="assets/images/flower-eucalyptus.png" alt="" class="section-flower section-flower--left">
+            <img src="assets/images/flower-eucalyptus.png" alt="" class="section-flower section-flower--right">
+        </div>
+        <div class="container">
+            <h2>¿Cuánto nos conoces?</h2>
+            <div class="quiz-container">
+                <!-- 10 cards will be generated here by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Info -->
+    <section id="info">
+        <div class="section-flowers" aria-hidden="true">
+            <img src="assets/images/flower-buds.png" alt="" class="section-flower section-flower--left">
+            <img src="assets/images/flower-buds.png" alt="" class="section-flower section-flower--right">
+        </div>
+        <div class="container">
+            <h2>Información de la Boda</h2>
+            <div class="info-content">
+                <div class="info-item">
+                    <h3>Ceremonia</h3>
+                    <p><strong>Fecha:</strong> Sábado, 13 de Junio de 2026</p>
+                    <p><strong>Hora:</strong> 3:00 PM</p>
+                    <p><strong>Lugar:</strong> Hacienda El Trebolito Danés</p>
+                    <p><strong>Dirección:</strong> Kilómetro 5 Vía Guaymaral, Bogotá</p>
+                </div>
+                <div class="info-item">
+                    <h3>Recepción</h3>
+                    <p><strong>Hora:</strong> 6:00 PM</p>
+                    <p><strong>Lugar:</strong> Hacienda El Trebolito Danés</p>
+                    <p><strong>Dirección:</strong> Kilómetro 5 Vía Guaymaral, Bogotá</p>
+                </div>
+            </div>
+            <p class="info-map-text">Esta es la ubicación de la hacienda.</p>
+            <!-- Widget de Google Maps: reemplaza el src del iframe con el enlace de tu mapa -->
+            <div class="info-map-wrap">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.7372141610713!2d-74.07790452515592!3d4.815121695160351!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f8658404aba2d%3A0xd1867583e3c72131!2sHacienda%20El%20Trebolito%20Dan%C3%A9s%2C%20Suba%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1771635128138!5m2!1ses!2sco"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dresscode -->
+
+    <section id="dresscode">
+        <div class="section-flowers" aria-hidden="true">
+            <img src="assets/images/flower-eucalyptus.png" alt="" class="section-flower section-flower--left">
+            <img src="assets/images/flower-eucalyptus.png" alt="" class="section-flower section-flower--right">
+        </div>
+        <div class="container">
+            <h2>Dresscode</h2>
+            <p>Queremos que luzcan increíbles, pero sobre todo, ¡que disfruten con nosotros de principio a fin! Les
+                sugerimos vestidos largos y trajes de corbata.</p>
+            <p><strong>Un tip para ellas:</strong> Como celebraremos en una hacienda, les recomendamos evitar los
+                tacones de aguja. Los tacones gruesos o plataformas serán sus mejores aliados para el pasto.</p>
+            <p><strong>Un tip para todos:</strong> ¡No olviden un chal o chaqueta para abrigarse cuando caiga la noche y
+                estemos dándolo todo en la pista de baile!</p>
+        </div>
+    </section>
+
+
+
+    <!-- Regalos -->
+    <section id="regalos">
+        <div class="section-flowers" aria-hidden="true">
+            <img src="assets/images/flower-lavender.png" alt="" class="section-flower section-flower--left">
+            <img src="assets/images/flower-lavender.png" alt="" class="section-flower section-flower--right">
+        </div>
+        <div class="container">
+            <h2>Tu presencia es un regalo</h2>
+            <p>El mejor regalo que la vida nos ha dado es tenerlos a ustedes compartiendo nuestra felicidad. Si desean
+                honrarnos con un obsequio de bodas, les agradecemos una lluvia de sobres, la cual destinaremos con mucha
+                ilusión al fondo de nuestra luna de miel.</p>
+        </div>
+    </section>
+
+    <!-- Confirma tu asistencia (formulario) -->
+    <section id="confirmar-asistencia">
+        <div class="section-flowers" aria-hidden="true">
+            <img src="assets/images/flower-thistle.png" alt="" class="section-flower section-flower--left">
+            <img src="assets/images/flower-thistle.png" alt="" class="section-flower section-flower--right">
+        </div>
+        <div class="container">
+            <h2>Confirma tu asistencia</h2>
+            <p> Confirma tu asistencia antes del 13 de mayo de 2026.</p>
+            <p class="pdf-only pdf-confirmar-texto">Haz clic en el botón para confirmar tu asistencia en nuestra página
+                web:</p>
+            <a id="pdf-confirmar-link" class="pdf-only pdf-confirmar-boton" href="#">Confirmar mi asistencia</a>
+            <!-- En la web se muestra el iframe; en PDF se oculta y se muestra el botón de arriba -->
+            <div class="google-form-wrap no-pdf">
+                <iframe class="google-form-embed"
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSeOjCmpTeHwIQpd4RkwnHa7m7oJhmwceUhSsD93SrigeeUaww/viewform?embedded=true"
+                    width="640" height="800" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Hecho con ❤️ por Gabriella & Francisco</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
