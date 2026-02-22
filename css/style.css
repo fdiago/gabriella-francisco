@@ -513,6 +513,12 @@ footer {
         padding: 10px;
         font-size: 0.85rem; /* Texto un poco más pequeño */
     }
+    
+    h2:not(.subtitle) {
+    font-family: "Playwrite US Modern", cursive;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
 }
 
 /* 3. Regla para que la tarjeta gire al tocarla en el celular (se usa con JavaScript) */
