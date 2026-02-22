@@ -528,7 +528,7 @@ footer {
 }
 
 /* Tipografía exclusiva para el título de Nuestra Historia */
-h2 {
+h2:not(.subtitle) {
     font-family: "Playwrite US Modern", cursive;
     font-weight: 400;
     font-size: 2.5rem;
