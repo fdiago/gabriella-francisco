@@ -526,3 +526,10 @@ footer {
         z-index: 5 !important; /* Trae las flores al frente */
     }
 }
+
+/* Tipografía exclusiva para el título de Nuestra Historia */
+h2 {
+    font-family: "Playwrite US Modern", cursive;
+    font-weight: 400;
+    font-size: 2.5rem;
+}
