@@ -496,7 +496,7 @@ footer {
     /* 1. Flores: Las hacemos más pequeñas y semitransparentes (marca de agua) para no tapar el texto */
     .section-flowers.is-visible .section-flower {
         max-width: 80px !important;
-        opacity: 0.6 !important; 
+        opacity: 0.1 !important; 
     }
 
     /* 2. Quiz: Achicamos las tarjetas para que quepan dos por fila y no quede tan largo */
