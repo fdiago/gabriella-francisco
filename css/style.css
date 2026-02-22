@@ -495,8 +495,8 @@ footer {
 @media (max-width: 768px) {
     /* 1. Flores: Las hacemos más pequeñas y semitransparentes (marca de agua) para no tapar el texto */
     .section-flowers.is-visible .section-flower {
-        max-width: 50px !important;
-        opacity: 0.2 !important; 
+        max-width: 80px !important;
+        opacity: 0.6 !important; 
     }
 
     /* 2. Quiz: Achicamos las tarjetas para que quepan dos por fila y no quede tan largo */
@@ -518,4 +518,11 @@ footer {
 /* 3. Regla para que la tarjeta gire al tocarla en el celular (se usa con JavaScript) */
 .quiz-card.is-flipped .card-inner {
     transform: rotateY(180deg);
+}
+
+/* Asegurar que las flores queden por encima del mapa y los formularios en celulares */
+@media (max-width: 768px) {
+    .section-flowers {
+        z-index: 5 !important; /* Trae las flores al frente */
+    }
 }
