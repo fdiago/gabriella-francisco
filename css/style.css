@@ -493,32 +493,46 @@ footer {
 
 /* --- AJUSTES PARA CELULARES --- */
 @media (max-width: 768px) {
-    /* 1. Flores: Las hacemos más pequeñas y semitransparentes (marca de agua) para no tapar el texto */
+ /* Alineamos las flores a la altura del título (h2) */
+    .section-flower {
+        top: 125px !important; /* Ajusta este número un poco más arriba o abajo si lo necesitas */
+        transform: translateY(0) scale(0.95) !important; /* Quitamos el centrado vertical automático */
+    }
+
+    .section-flower--right {
+        transform: translateY(0) scale(0.95) scaleX(-1) !important;
+    }
+
+    /* Estado cuando las flores se vuelven visibles al hacer scroll */
     .section-flowers.is-visible .section-flower {
         max-width: 80px !important;
         opacity: 0.7 !important; 
+        transform: translateY(0) scale(1) !important;
     }
 
-    /* 2. Quiz: Achicamos las tarjetas para que quepan dos por fila y no quede tan largo */
+    .section-flowers.is-visible .section-flower--right {
+        transform: translateY(0) scale(1) scaleX(-1) !important;
+    }
+
+    /* 2. Quiz: Achicamos las tarjetas para que quepan dos por fila */
     .quiz-container {
         gap: 10px;
     }
     
     .quiz-card {
-        width: 45%; /* Ocupan casi la mitad de la pantalla cada una */
+        width: 45%; 
         height: 160px;
     }
 
     .card-front, .card-back {
         padding: 10px;
-        font-size: 0.85rem; /* Texto un poco más pequeño */
+        font-size: 0.85rem; 
     }
 
-    h2:not(.subtitle) {
-    font-family: "Playwrite US Modern", cursive;
-    font-weight: 400;
-    font-size: 2.5rem;
-}
+    /* Asegurar que las flores queden por encima del mapa y los formularios en celulares */
+    .section-flowers {
+        z-index: 5 !important; 
+    }
 }
 
 /* 3. Regla para que la tarjeta gire al tocarla en el celular (se usa con JavaScript) */
